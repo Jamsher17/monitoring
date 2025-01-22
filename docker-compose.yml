@@ -1,0 +1,14 @@
+version: "2.28"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0:9000
+    volumes:
+      - .:/app
+    ports:
+      - "9000:9000"
+    environment:
+      - PYTHONPATH=/app
