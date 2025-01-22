@@ -5,10 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: python manage.py runserver 0:9000
+    command: python manage.py runserver 0:8000
     volumes:
       - .:/app
     ports:
-      - "9000:9000"
-    environment:
-      - PYTHONPATH=/app
+      - "8000:8000"
