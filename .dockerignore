@@ -1,0 +1,41 @@
+# Django / standard
+*.pyc
+*.pyo
+*.mo
+*.db
+*.css.map
+*.egg-info
+*.sql.gz
+.cache
+.project
+.idea
+.pydevproject
+.idea/workspace.xml
+.devcontainer
+.vscode
+.DS_Store
+__pycache__
+dist
+docs
+env
+logs
+static
+staticfiles
+media
+
+# git
+.git
+.github
+.gitmodules
+
+# Docker
+Dockerfile
+docker
+
+# Submodules
+tg-bot
+
+# Project
+.env.example
+README.md 
+Makefile
