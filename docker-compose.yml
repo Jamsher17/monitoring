@@ -1,5 +1,8 @@
 version: "2.28"
 
+x-tg-bot: &tg-bot
+  NODE_ENV: development
+
 services:
   backend:
     build:
@@ -10,3 +13,21 @@ services:
       - .:/app
     ports:
       - "8000:8000"
+  tg-bot:
+    build:
+      context: ./tg-bot
+      dockerfile: Dockerfile.dev
+      args:
+        NODE_ENV: development
+    tty: true
+    stdin_open: true
+    env_file:
+      - .env
+    environment:
+      <<: *tg-bot
+    command: ["yarn", "dev"]
+    volumes:
+      - ./tg-bot:/usr/src/app-dev
+      - node_modules:/usr/src/app-dev/node_modules
+volumes:
+  node_modules:
