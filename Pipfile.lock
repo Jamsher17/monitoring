@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "50db225f9b7867f41347f016de3a0f2e4281834096b687b31a59a8d356efd246"
+            "sha256": "28f6ca2ebb9cc2fd238e32a0faf0f964f838e3acddf26d78ccfc761bd8f67917"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,6 +34,26 @@
             "markers": "python_version >= '3.10'",
             "version": "==5.1.5"
         },
+        "django-environ": {
+            "hashes": [
+                "sha256:227dc891453dd5bde769c3449cf4a74b6f2ee8f7ab2361c93a07068f4179041a",
+                "sha256:92fb346a158abda07ffe6eb23135ce92843af06ecf8753f43adf9d2366dcc0ca"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9' and python_version < '4'",
+            "version": "==0.12.0"
+        },
+        "django-phonenumber-field": {
+            "extras": [
+                "phonenumbers"
+            ],
+            "hashes": [
+                "sha256:196c917b70c01a98e327f482eb8a4a4a55a29891db551f99078585397370b3ba",
+                "sha256:8a560fe1b01b94c9de8cde22bc373b695f023cc6df4baba00264cb079da9f631"
+            ],
+            "markers": "python_version >= '3.8'",
+            "version": "==8.0.0"
+        },
         "djangorestframework": {
             "hashes": [
                 "sha256:2b8871b062ba1aefc2de01f773875441a961fefbf79f5eed1e32b2f096944b20",
@@ -42,6 +62,13 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==3.15.2"
+        },
+        "phonenumbers": {
+            "hashes": [
+                "sha256:4c32e3c941b24e5ce28d2211f624f0fef08462781e3d7e5e85192275cfd6c680",
+                "sha256:97624ada7260daafd09538baa6574b14cb9151cf29c5b22d9278abd050957edf"
+            ],
+            "version": "==8.13.54"
         },
         "psycopg2-binary": {
             "hashes": [

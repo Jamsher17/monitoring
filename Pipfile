@@ -7,6 +7,8 @@ name = "pypi"
 django = "*"
 psycopg2-binary = "*"
 djangorestframework = "*"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
+django-environ = "*"
 
 [dev-packages]
 

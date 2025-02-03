@@ -1,7 +1,11 @@
-version: "2.28"
-
 x-tg-bot: &tg-bot
   NODE_ENV: development
+x-database: &database
+  DB_HOST: database
+  DB_NAME: dev_db
+  DB_USER: postgres
+  DB_PASSWORD: postgres
+  DB_PORT: 5432
 
 services:
   backend:
@@ -13,6 +17,11 @@ services:
       - .:/app
     ports:
       - "8000:8000"
+    environment:
+      <<: *database
+    depends_on:
+      database:
+        condition: service_healthy
   tg-bot:
     build:
       context: ./tg-bot
@@ -29,5 +38,29 @@ services:
     volumes:
       - ./tg-bot:/usr/src/app-dev
       - node_modules:/usr/src/app-dev/node_modules
+    depends_on:
+      database:
+        condition: service_healthy
+  database:
+    build:
+      context: ./docker/database
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_DB: dev_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_AUTH_METHOD: trust
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "54330:5432"
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+# volumes
 volumes:
   node_modules:
+  db_data:

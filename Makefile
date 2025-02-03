@@ -19,3 +19,11 @@ superuser:
 # Build and start Docker containers in detached mode
 up:
 	docker-compose $(BASE) up --build -d
+
+# Django shell
+bash:
+	docker-compose $(BASE) exec -it backend bash	
+
+# db shell
+dbshell:
+	docker-compose $(BASE) exec backend python manage.py dbshell
