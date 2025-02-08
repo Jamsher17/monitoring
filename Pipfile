@@ -9,6 +9,7 @@ psycopg2-binary = "*"
 djangorestframework = "*"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 django-environ = "*"
+django-multiselectfield = "*"
 
 [dev-packages]
 

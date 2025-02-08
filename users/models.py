@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils import timezone
+from multiselectfield import MultiSelectField
 
 
 # Create your models here.
@@ -32,3 +33,51 @@ class CustomUser(AbstractUser):
 
     class Meta:
         db_table = "auth_user"
+
+class Student(CustomUser):
+    comment = models.CharField(max_length=50, null = True)
+    
+    class Meta:
+        verbose_name = 'Student'
+        verbose_name_plural = 'Students'
+
+    
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.first_name}  {self.last_name}'
+
+
+class Teacher(CustomUser):
+    comment = models.CharField(max_length=50, null = True)
+     
+    class Meta:
+        verbose_name = 'Teacher'
+        verbose_name_plural = 'Teachers'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.first_name}  {self.last_name}'
+
+
+
+class Group(models.Model):
+    group_name = models.CharField(max_length=50, unique=True, blank=False)
+    DAY_CHOICES = [
+        ('Monday', 'Monday'),
+        ('Tuesday', 'Tuesday'),
+        ('Wednesday', 'Wednesday'),
+        ('Thursday', 'Thursday'),
+        ('Friday', 'Friday'),
+        ('Saturday', 'Saturday'),
+        ('Sunday', 'Sunday'),
+    ]
+
+
+    select_days = MultiSelectField(choices=DAY_CHOICES)
+    created_date = models.DateTimeField(verbose_name= 'creation_date', blank= True, null = True) 
+    students =  models.ManyToManyField(Student, blank = True)
